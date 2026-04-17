@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cardnews SVG Builder</title>
+  <style>
+    :root {{
+      color-scheme: light;
+      --ink-strong: #16212b;
+      --ink: #3a4752;
+      --muted: #677682;
+      --canvas: #f4f6f8;
+      --surface: #ffffff;
+      --surface-muted: #f7f9fb;
+      --line: #dae0e6;
+      --line-strong: #c5ced6;
+      --primary: #18486d;
+      --primary-soft: #e7f0f7;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 18px;
+      --radius-xl: 22px;
+      --shadow-panel: 0 10px 28px rgba(16, 24, 32, 0.06);
+      --shadow-floating: 0 18px 40px rgba(16, 24, 32, 0.1);
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      font-family: "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      background: linear-gradient(180deg, #f9fbfc 0%, #f2f5f8 100%);
+      color: var(--ink);
+    }}
+    .page {{
+      width: min(1280px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 20px 0 64px;
+    }}
+    .hero {{
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 16px;
+    }}
+    .hero h1 {{
+      margin: 0;
+      font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--ink-strong);
+      max-width: 760px;
+    }}
+    .hero p {{
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.6;
+    }}
+    .actions {{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }}
+    button {{
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-md);
+      height: 40px;
+      padding: 0 16px;
+      background: var(--primary);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }}
+    button.secondary {{
+      background: var(--surface);
+      color: var(--ink-strong);
+      border-color: var(--line-strong);
+    }}
+    .meta {{
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-bottom: 20px;
+    }}
+    .meta-card {{
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--surface);
+      box-shadow: var(--shadow-panel);
+      padding: 16px 18px;
+    }}
+    .meta-card strong {{
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }}
+    .meta-card span {{
+      color: var(--ink-strong);
+      font-size: 14px;
+      font-weight: 600;
+    }}
+    .grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }}
+    .slide {{
+      position: relative;
+      min-height: 520px;
+      padding: 22px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow-panel);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }}
+    .slide-head,
+    .slide-body,
+    .slide-foot {{
+      position: relative;
+      z-index: 1;
+    }}
+    .chip,
+    .highlight {{
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }}
+    .headline {{
+      margin: 14px 0 10px;
+      color: var(--ink-strong);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+    }}
+    .subheadline {{
+      margin: 0;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.55;
+      font-weight: 600;
+    }}
+    .fact-row {{
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+    .fact-pill {{
+      border: 1px solid var(--line);
+      background: var(--surface-muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      font-weight: 600;
+    }}
+    .body-lines {{
+      margin-top: 18px;
+      display: grid;
+      gap: 10px;
+    }}
+    .body-lines p {{
+      margin: 0;
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.62;
+    }}
+    .bullets {{
+      margin: 14px 0 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 7px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink);
+    }}
+    .slide-footer {{
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: end;
+      margin-top: 20px;
+    }}
+    .footer-note {{
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      font-weight: 600;
+    }}
+    .download-row {{
+      margin-top: 12px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }}
+    @media (max-width: 720px) {{
+      .page {{ width: min(100vw - 20px, 1280px); padding-top: 16px; }}
+      .hero {{ display: block; }}
+      .actions {{ margin-top: 14px; }}
+    }}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <div>
+        <h1 id="page-title"></h1>
+        <p>Admin inquiries UI tone card preview. Review hierarchy and facts, then download SVG.</p>
+      </div>
+      <div class="actions">
+        <button type="button" id="download-all">Download all SVG</button>
+        <button type="button" class="secondary" id="copy-json">Copy JSON</button>
+      </div>
+    </div>
+    <div class="meta" id="meta-grid"></div>
+    <div class="grid" id="slides-root"></div>
+  </div>
+  <script>
+    const DATA = {"meta": {"title": "행정사 마케팅 자동화 시스템 구축기: 시장 보고서부터 네이버 블로그 확장까", "category": "자동화개발", "main_keyword": "행정사 마케팅 자동화", "sub_keyword": "네이버 블로그 자동화, 콘텐츠 브리프, 노션 초안 관리", "lead_asset": "가이드", "template_variant": "insight", "generated_at": "2026-04-17T07:53:25"}, "theme": "compliance", "template_variant": "insight", "cover_label": "ADMIN GUIDE", "brand_note": "Attorney Jean | Email inquiry", "slides": [{"kicker": "자동화개발", "headline": "행정사 마케팅 자동화 시스템 구축기: 시장 보고서부터 네이버 블로그 확장까", "subheadline": "행정사 마케팅 자동화", "facts": ["분류: 자동화개발", "키워드: 행정사 마케팅 자동화"], "body_lines": ["행정사 개업을 준비하거나 1인 사무소를 운영하다 보면 가장 큰 고민이 마케팅"], "bullets": [], "highlight": "핵심 체크포인트", "footer": "Attorney Jean"}, {"kicker": "POINT 1", "headline": "# 행정사 마케팅 자동화 시스템 구축기: 시장 보고서부터 네이버 블로그", "subheadline": "실무에서 바로 확인할 내용을 정리했습니다.", "facts": ["항목 1", "키워드: 행정사 마케팅 자동화"], "body_lines": ["실무에서 바로 확인할 내용을 정리했습니다."], "bullets": [], "highlight": "행정사 마케팅 자동화", "footer": "실무 체크"}, {"kicker": "POINT 2", "headline": "1인 행정사 사무소, 마케팅 자동화로 경쟁력 확보하는 시대", "subheadline": "행정사 개업을 준비하거나 1인 사무소를 운영하다 보면 가장 큰 고민이 마케팅입니다.", "facts": ["항목 2", "키워드: 행정사 마케팅 자동화"], "body_lines": ["행정사 개업을 준비하거나 1인 사무소를 운영하다 보면 가장 큰 고민이 마케팅입니다.", "실제로 성공적인 행정사 사무소들을 보면 단순히 법적 전문성만으로는 한계가 있다는 것"], "bullets": [], "highlight": "행정사 마케팅 자동화", "footer": "실무 체크"}, {"kicker": "POINT 3", "headline": "행정사 마케팅 자동화 시스템의 핵심 구성 요소", "subheadline": "### 콘텐츠 브리프 자동 생성 시스템", "facts": ["항목 3", "키워드: 행정사 마케팅 자동화"], "body_lines": ["### 콘텐츠 브리프 자동 생성 시스템", "마케팅 자동화의 첫 번째 단계는 콘텐츠 기획입니다. 매일 블로그 포스팅할 주제를 고"], "bullets": ["**시장 보고서 기반 주제 발굴**: 비자, 허가, 권리구제 등 전문 분", "**검색량 기반 우선순위 설정**: 네이버, 구글 검색 트렌드 분석으로", "**계절성 콘텐츠 사전 준비**: 연말정산, 사업자등록 등 시기별 수요"], "highlight": "행정사 마케팅 자동화", "footer": "실무 체크"}, {"kicker": "POINT 4", "headline": "네이버 블로그 자동화 확장 전략", "subheadline": "### RSS 피드 연동을 통한 다채널 확산", "facts": ["항목 4", "키워드: 행정사 마케팅 자동화"], "body_lines": ["### RSS 피드 연동을 통한 다채널 확산", "네이버 블로그는 여전히 국내 검색에서 강력한 영향력을 가지고 있습니다. 메인 블로그"], "bullets": ["**콘텐츠 재가공 자동화**: 원문의 톤앤매너를 네이버 블로그 독자에게", "**해시태그 자동 생성**: SEO에 효과적인 태그 조합을 데이터 기반으", "**포스팅 스케줄링**: 최적 노출 시간대에 맞춘 자동 발행"], "highlight": "행정사 마케팅 자동화", "footer": "실무 체크"}, {"kicker": "NEXT STEP", "headline": "정리 파일로 바로 준비하세요", "subheadline": "가이드", "facts": ["문의 채널: 이메일", "처리 기준: 서류 완성도"], "body_lines": ["서류 누락과 순서 오류를 줄이는 것이 핵심입니다.", "이메일 문의 기준으로 상황을 정리해두면 훨씬 빠릅니다."], "bullets": ["현재 상황", "필요 서류", "희망 일정"], "highlight": "email inquiry", "footer": "a.attorneyjean@gmail.com"}]};
+    const THEMES = {"visa": {"bg": "#F4F6F8", "panel": "#FFFFFF", "primary": "#16212B", "secondary": "#3A4752", "accent": "#18486D", "accent_soft": "#E7F0F7", "line": "#DAE0E6"}, "business": {"bg": "#F4F6F8", "panel": "#FFFFFF", "primary": "#16212B", "secondary": "#3A4752", "accent": "#28704C", "accent_soft": "#EAF4EE", "line": "#DAE0E6"}, "compliance": {"bg": "#F4F6F8", "panel": "#FFFFFF", "primary": "#16212B", "secondary": "#3A4752", "accent": "#A16824", "accent_soft": "#F8EEE3", "line": "#DAE0E6"}};
+
+    function escapeXml(value) {{
+      return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&apos;");
+    }}
+
+    function getTheme() {{
+      return THEMES[DATA.theme] || THEMES.visa;
+    }}
+
+    function renderMeta() {{
+      const root = document.getElementById("meta-grid");
+      const meta = DATA.meta || {{}};
+      const rows = [
+        ["Category", meta.category || "-"],
+        ["Keyword", meta.main_keyword || "-"],
+        ["Lead Asset", meta.lead_asset || "-"],
+        ["Template", meta.template_variant || "-"],
+        ["Generated", meta.generated_at || "-"],
+      ];
+      root.innerHTML = rows.map(([label, value]) => `
+        <div class="meta-card">
+          <strong>${{label}}</strong>
+          <span>${{value}}</span>
+        </div>
+      `).join("");
+    }}
+
+    function slideSvg(slide, index) {{
+      const theme = getTheme();
+      const facts = (slide.facts || []).slice(0, 3);
+      const factBlocks = facts.map((fact, factIndex) => {{
+        const x = 86 + (factIndex * 300);
+        return `
+          <rect x="${{x}}" y="390" width="286" height="44" rx="12" fill="${{theme.accent_soft}}" stroke="${{theme.line}}" />
+          <text x="${{x + 14}}" y="417" font-size="20" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" fill="${{theme.primary}}">${{escapeXml(fact)}}</text>
+        `;
+      }}).join("");
+
+      const bodyLines = (slide.body_lines || []).map((line, lineIndex) =>
+        `<text x="86" y="${{514 + lineIndex * 52}}" font-size="31" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" fill="${{theme.primary}}" opacity="0.95">${{escapeXml(line)}}</text>`
+      ).join("");
+
+      const bullets = (slide.bullets || []).map((line, lineIndex) => `
+        <circle cx="94" cy="${{708 + lineIndex * 50}}" r="5" fill="${{theme.accent}}" />
+        <text x="114" y="${{717 + lineIndex * 50}}" font-size="28" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" fill="${{theme.primary}}">${{escapeXml(line)}}</text>
+      `).join("");
+
+      return `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="${{theme.bg}}" />
+  <rect x="40" y="40" width="1000" height="1270" rx="22" fill="${{theme.panel}}" stroke="${{theme.line}}" stroke-width="2" />
+  <rect x="86" y="96" width="220" height="34" rx="10" fill="${{theme.accent_soft}}" />
+  <text x="98" y="118" font-size="16" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" font-weight="700" fill="${{theme.accent}}">${{escapeXml(slide.kicker || DATA.cover_label || "CARD")}}</text>
+  <text x="86" y="234" font-size="66" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" font-weight="700" fill="${{theme.primary}}">${{escapeXml(slide.headline || DATA.meta.title || "")}}</text>
+  <text x="86" y="306" font-size="34" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" font-weight="600" fill="${{theme.secondary}}">${{escapeXml(slide.subheadline || "")}}</text>
+  <line x1="86" y1="352" x2="994" y2="352" stroke="${{theme.line}}" stroke-width="2" />
+  ${{factBlocks}}
+  ${{bodyLines}}
+  ${{bullets}}
+  <rect x="86" y="1096" width="350" height="50" rx="12" fill="${{theme.accent_soft}}" stroke="${{theme.line}}" />
+  <text x="102" y="1128" font-size="22" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" font-weight="700" fill="${{theme.primary}}">${{escapeXml(slide.highlight || DATA.cover_label || "")}}</text>
+  <text x="86" y="1204" font-size="24" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" fill="${{theme.secondary}}">${{escapeXml(slide.footer || DATA.brand_note || "")}}</text>
+  <text x="86" y="1244" font-size="19" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" fill="${{theme.secondary}}" opacity="0.9">${{escapeXml(DATA.brand_note || "Attorney Jean | Email inquiry")}}</text>
+  <text x="964" y="1244" text-anchor="end" font-size="19" font-family="Segoe UI, Apple SD Gothic Neo, Noto Sans KR, Malgun Gothic, sans-serif" fill="${{theme.secondary}}" opacity="0.9">0${{index + 1}}</text>
+</svg>`;
+    }}
+
+    function download(filename, content) {{
+      const blob = new Blob([content], {{ type: "image/svg+xml;charset=utf-8" }});
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = filename;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      URL.revokeObjectURL(url);
+    }}
+
+    function renderSlides() {{
+      const root = document.getElementById("slides-root");
+      const theme = getTheme();
+      root.innerHTML = DATA.slides.map((slide, index) => `
+        <article class="slide" style="background:${{theme.panel}}; color:${{theme.primary}}; border-color:${{theme.line}};">
+          <div class="slide-head">
+            <span class="chip" style="background:${{theme.accent_soft}}; color:${{theme.accent}}; border:1px solid ${{theme.line}};">${{slide.kicker || DATA.cover_label}}</span>
+            <h2 class="headline">${{slide.headline || ""}}</h2>
+            <p class="subheadline" style="color:${{theme.secondary}};">${{slide.subheadline || ""}}</p>
+            <div class="fact-row">
+              ${(slide.facts || []).map(item => `<span class="fact-pill">${{item}}</span>`).join("")}
+            </div>
+          </div>
+          <div class="slide-body">
+            <div class="body-lines">
+              ${(slide.body_lines || []).map(line => `<p>${{line}}</p>`).join("")}
+            </div>
+            <ul class="bullets">
+              ${(slide.bullets || []).map(line => `<li>${{line}}</li>`).join("")}
+            </ul>
+          </div>
+          <div class="slide-foot">
+            <div class="slide-footer">
+              <span class="highlight" style="background:${{theme.accent_soft}}; color:${{theme.primary}}; border:1px solid ${{theme.line}};">${{slide.highlight || DATA.cover_label}}</span>
+              <span class="footer-note">${{slide.footer || DATA.brand_note}}</span>
+            </div>
+            <div class="download-row">
+              <button type="button" class="secondary" data-index="${{index}}">Download SVG</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      root.querySelectorAll("button[data-index]").forEach((button) => {{
+        button.addEventListener("click", () => {{
+          const index = Number(button.getAttribute("data-index"));
+          const slide = DATA.slides[index];
+          download(`slide-${{index + 1}}.svg`, slideSvg(slide, index));
+        }});
+      }});
+    }}
+
+    document.getElementById("page-title").textContent = DATA.meta.title || "Cardnews Builder";
+    document.getElementById("download-all").addEventListener("click", () => {{
+      DATA.slides.forEach((slide, index) => {{
+        window.setTimeout(() => download(`slide-${{index + 1}}.svg`, slideSvg(slide, index)), index * 110);
+      }});
+    }});
+    document.getElementById("copy-json").addEventListener("click", async () => {{
+      await navigator.clipboard.writeText(JSON.stringify(DATA, null, 2));
+    }});
+    renderMeta();
+    renderSlides();
+  </script>
+</body>
+</html>
