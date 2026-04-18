@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "[TEST] ???? ?? 20260418-204127",
+    "category": "비자와 체류",
+    "main_keyword": "전자입국신고",
+    "sub_keyword": "eArrivalCard, 한국입국신고, 입국카드대체, 가짜입국신고사이트",
+    "lead_asset": "",
+    "template_variant": "checklist",
+    "generated_at": "2026-04-18T13:06:06"
+  },
+  "theme": "visa",
+  "template_variant": "checklist",
+  "cover_label": "JEAN INSIGHT",
+  "brand_note": "행정사 Jean · a.attorneyjean@gmail.com · 2026년 기준",
+  "slides": [
+    {
+      "kicker": "",
+      "headline": "[TEST] ???? ??...",
+      "subheadline": "전자입국신고",
+      "facts": [
+        "대상 판단 우선",
+        "리스크 사전 점검"
+      ],
+      "body_lines": [
+        "핵심 내용을 짧고 분명하게 정리했습니다"
+      ],
+      "bullets": [],
+      "highlight": "핵심 요약",
+      "footer": "실무 핵심 정리"
+    },
+    {
+      "kicker": "",
+      "headline": "대상 구분",
+      "subheadline": "최근 법무부는 가짜 전자입국신고 사이트로 인한 개인정보",
+      "facts": [
+        "최근 법무부는 가짜 전자입국신고 사이트로 인한 개인정보",
+        "**실제로 많은 분들이 \"전자입국신고를 어디서 작성해야"
+      ],
+      "body_lines": [
+        "대상 판단 우선",
+        "대상 구분"
+      ],
+      "bullets": [],
+      "highlight": "대상 구분",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "절차",
+      "subheadline": "**의무 작성 대상:**",
+      "facts": [
+        "**의무 작성 대상:**",
+        "외국 국적자 (관광, 사업, 방문 목적 모두 포함)"
+      ],
+      "body_lines": [
+        "재외동포 (재외동포증 소지자 포함)",
+        "장기체류 후 재입국하는 한국 국적자"
+      ],
+      "bullets": [],
+      "highlight": "절차",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "체크리스트",
+      "subheadline": "**공식 전자입국신고 사이트 확인법:**",
+      "facts": [
+        "**공식 전자입국신고 사이트 확인법:**",
+        "도메인: www.arrival.go.kr (정부 도메인"
+      ],
+      "body_lines": [
+        "운영기관: 법무부 출입국·외국인정책본부",
+        "수수료: 완전 무료 (결제 요구 시 가짜 사이트)"
+      ],
+      "bullets": [],
+      "highlight": "체크리스트",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "리스크 점검",
+      "subheadline": "",
+      "facts": [
+        "| 구분 | 자주 막히는 이유 | 실무 해결법 |",
+        "|------|-----------------|"
+      ],
+      "body_lines": [
+        "| 체류지 주소 | 호텔명만 기재, 상세주소 누락 |",
+        "| 초청인 정보 | 연락처 불일치, 관계 모호 |"
+      ],
+      "bullets": [],
+      "highlight": "리스크 요약",
+      "footer": "사전 확인"
+    }
+  ]
+}
