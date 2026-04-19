@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "어린이집·유치원 설치 인허가 절차",
+    "category": "인허가",
+    "main_keyword": "어린이집설립인가",
+    "sub_keyword": "어린이집허가절차, 유치원설립요건",
+    "lead_asset": "체크리스트",
+    "template_variant": "checklist",
+    "generated_at": "2026-04-19T01:15:51"
+  },
+  "theme": "business",
+  "template_variant": "checklist",
+  "cover_label": "JEAN INSIGHT",
+  "brand_note": "행정사 Jean · a.attorneyjean@gmail.com · 2026년 기준",
+  "slides": [
+    {
+      "kicker": "",
+      "headline": "어린이집·유치원 설치 인허가 절차",
+      "subheadline": "어린이집설립인가",
+      "facts": [
+        "대상 판단 우선",
+        "리스크 사전 점검"
+      ],
+      "body_lines": [
+        "핵심 내용을 짧고 분명하게 정리했습니다"
+      ],
+      "bullets": [],
+      "highlight": "핵심 요약",
+      "footer": "실무 핵심 정리"
+    },
+    {
+      "kicker": "",
+      "headline": "대상 구분",
+      "subheadline": "최근 서울시교육청이 발표한 유치원 설립 인허가 현황을",
+      "facts": [
+        "최근 서울시교육청이 발표한 유치원 설립 인허가 현황을",
+        "실무에서 보육시설 창업자들이 가장 자주 막히는 지점은"
+      ],
+      "body_lines": [
+        "대상 판단 우선",
+        "대상 구분"
+      ],
+      "bullets": [],
+      "highlight": "대상 구분",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "절차",
+      "subheadline": "어린이집과 유치원은 관할 기관부터 다릅니다. 어린이집은",
+      "facts": [
+        "어린이집과 유치원은 관할 기관부터 다릅니다. 어린이집은",
+        "**어린이집 설립인가 (시·군·구청 관할)**"
+      ],
+      "body_lines": [
+        "영유아보육법 적용",
+        "보건복지부 지침 준수"
+      ],
+      "bullets": [],
+      "highlight": "절차",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "체크리스트",
+      "subheadline": "1단계: 사전 검토 서류 (접수 2주 전)",
+      "facts": [
+        "1단계: 사전 검토 서류 (접수 2주 전)",
+        "**공통 필수 서류**"
+      ],
+      "body_lines": [
+        "[ ] 설립계획서 (사업목적, 운영계획 포함)",
+        "[ ] 재정 능력 증명서류 (예금잔액증명서, 부동산..."
+      ],
+      "bullets": [],
+      "highlight": "체크리스트",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "리스크 점검",
+      "subheadline": "체크리스트",
+      "facts": [
+        "**표준 처리기간**",
+        "| 구분 | 어린이집 | 유치원 | 비고 |"
+      ],
+      "body_lines": [
+        "|------|----------|--------|---...",
+        "| 서류 검토 | 14일 | 30일 | 외국인 서류"
+      ],
+      "bullets": [],
+      "highlight": "리스크 요약",
+      "footer": "사전 확인"
+    }
+  ]
+}
