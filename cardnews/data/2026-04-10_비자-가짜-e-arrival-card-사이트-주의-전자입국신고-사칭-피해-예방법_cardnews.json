@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "title": "[비자] 가짜 e-Arrival Card 사이트 주의 — 전자입국신고 사칭 피해 예방법",
+    "category": "비자와 체류",
+    "main_keyword": "전자입국신고",
+    "sub_keyword": "eArrivalCard, 한국입국신고, 입국카드대체, 가짜입국신고사이트",
+    "lead_asset": "",
+    "template_variant": "checklist",
+    "generated_at": "2026-04-19T01:13:01"
+  },
+  "theme": "visa",
+  "template_variant": "checklist",
+  "cover_label": "JEAN INSIGHT",
+  "brand_note": "행정사 Jean · a.attorneyjean@gmail.com · 2026년 기준",
+  "slides": [
+    {
+      "kicker": "",
+      "headline": "[비자] 가짜...",
+      "subheadline": "전자입국신고",
+      "facts": [
+        "대상 판단 우선",
+        "리스크 사전 점검"
+      ],
+      "body_lines": [
+        "핵심 내용을 짧고 분명하게 정리했습니다"
+      ],
+      "bullets": [],
+      "highlight": "핵심 요약",
+      "footer": "실무 핵심 정리"
+    },
+    {
+      "kicker": "",
+      "headline": "대상 구분",
+      "subheadline": "대상 판단 우선",
+      "facts": [
+        "대상 판단 우선",
+        "대상 여부 확인"
+      ],
+      "body_lines": [
+        "국적 이력 정리",
+        "대상 구분"
+      ],
+      "bullets": [],
+      "highlight": "대상 구분",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "절차",
+      "subheadline": "최근 한국 입국 예정 외국인들을 대상으로 한 가짜",
+      "facts": [
+        "최근 한국 입국 예정 외국인들을 대상으로 한 가짜",
+        "**실무에서 외국인 고객들이 가장 자주 막히는 지점은"
+      ],
+      "body_lines": [
+        "절차",
+        "**올바른 접근 경로:**"
+      ],
+      "bullets": [],
+      "highlight": "절차",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "체크리스트",
+      "subheadline": "공식 사이트 주소와 특징",
+      "facts": [
+        "공식 사이트 주소와 특징",
+        "전자입국신고는 **정부24(www.gov.kr)에서만**"
+      ],
+      "body_lines": [
+        "**올바른 접근 경로:**",
+        "정부24 메인 → 민원24 → 출입국 → 전자입국신고"
+      ],
+      "bullets": [],
+      "highlight": "체크리스트",
+      "footer": "실무 확인"
+    },
+    {
+      "kicker": "",
+      "headline": "리스크 점검",
+      "subheadline": "",
+      "facts": [
+        "입국 전 확인사항 (3단계)",
+        "| 단계 | 확인 항목 | 안전 기준 |"
+      ],
+      "body_lines": [
+        "|------|----------|-----------|",
+        "| 1단계 | 웹사이트 주소 | gov.kr 도메인 확인 |"
+      ],
+      "bullets": [],
+      "highlight": "리스크 요약",
+      "footer": "사전 확인"
+    }
+  ]
+}
